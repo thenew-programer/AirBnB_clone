@@ -5,7 +5,6 @@ from datetime import datetime
 from dateutil import parser
 from models import storage
 
-
 class BaseModel:
     """defines all common attributes/methods for other classes"""
 
