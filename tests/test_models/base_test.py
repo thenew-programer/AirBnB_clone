@@ -52,3 +52,7 @@ class TestBase_to_dict(unittest.TestCase):
         x = BaseModel()
         x.name = "BaseModel"
         self.assertNotEqual(x.to_dict(), x.__dict__())
+
+
+if __name__ == "__main__":
+    unittest.main()
