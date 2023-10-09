@@ -14,9 +14,9 @@ from models.base_model import BaseModel
 class TestBase_instantiation(unittest.TestCase):
     """Unittests of instantiation of the BaseModel class"""
     def test_with_args(self):
-        with self.assertRaises(Exception)
-        x = BaseModel(10, "youssef")
-        print(x)
+        with self.assertRaises(Exception):
+            x = BaseModel(10, "youssef")
+            print(x)
 
 class TestBase_str(unittest.TestCase):
     """Unittests of str method of BaseModel class"""
