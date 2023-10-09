@@ -5,6 +5,7 @@ from datetime import datetime
 from dateutil import parser
 from models import storage
 
+
 class BaseModel:
     """defines all common attributes/methods for other classes"""
 
@@ -52,19 +53,6 @@ class BaseModel:
         _dict["created_at"] = self.created_at.isoformat()
         _dict["__class__"] = self.__class__.__name__
         return _dict
-
-    def save(self):
-        """
-        updates the public instance attribute updated_at with the current datetime
-        """
-        self.updated_at = datetime(
-            datetime.now().year,
-            datetime.now().month,
-            datetime.now().day,
-            datetime.now().hour,
-            datetime.now().minute,
-            datetime.now().second,
-        )
 
     def __str__(self):
         """
