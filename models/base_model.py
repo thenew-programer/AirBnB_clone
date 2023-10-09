@@ -19,5 +19,8 @@ class BaseModel:
         self.created_at = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f") 
         self.updated_at = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f") 
 
-
-
+    def __str__(self):
+        """
+        Overwrite the default behaviour of __str__ method
+        """
+        return f"[{self.__class__.__name__}] ({self.id}) ({self.__dict__})"
