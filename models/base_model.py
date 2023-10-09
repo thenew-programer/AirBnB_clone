@@ -19,6 +19,12 @@ class BaseModel:
         self.created_at = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f") 
         self.updated_at = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f") 
 
+    def save(self):
+        """
+        updates the public instance attribute updated_at with the current datetime
+        """
+        self.updated_at = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
+
     def __str__(self):
         """
         Overwrite the default behaviour of __str__ method
