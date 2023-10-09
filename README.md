@@ -127,4 +127,3 @@ $
 ```
 All tests should also pass in non-interactive mode: $ echo `python3 -m unittest discover tests` | bash
 ![HBNB](./815046647d23428a14ca.png)
-hahahat
