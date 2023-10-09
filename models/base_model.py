@@ -57,7 +57,14 @@ class BaseModel:
         """
         updates the public instance attribute updated_at with the current datetime
         """
-        self.updated_at = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.updated_at = datetime(
+            datetime.now().year,
+            datetime.now().month,
+            datetime.now().day,
+            datetime.now().hour,
+            datetime.now().minute,
+            datetime.now().second,
+        )
 
     def __str__(self):
         """
