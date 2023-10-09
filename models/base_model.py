@@ -3,7 +3,6 @@
 import uuid
 from datetime import datetime
 
-
 class BaseModel:
     """defines all common attributes/methods for other classes"""
 
