@@ -95,8 +95,8 @@ class TestBase_to_dict(unittest.TestCase):
                 "name": "Youssef",
                 "number": 10,
                 "id": "youssefbouryal",
-                "created_at": "2023-10-10 08:08:59",
-                "updated_at": "2023-10-10 08:08:59",
+                "created_at": "2023-10-10T08:08:59",
+                "updated_at": "2023-10-10T08:08:59",
                 "__class__": "BaseModel",
                 }
         x = BaseModel(**kwargs)
