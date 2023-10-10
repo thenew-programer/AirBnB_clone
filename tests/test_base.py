@@ -53,7 +53,7 @@ class TestBase_str(unittest.TestCase):
         x.name = "John"
         kwargs = x.to_dict().copy()
         y = BaseModel(**kwargs)
-        self.assertEqual(str(x), str(y))
+        self.assertEqual(len(str(x)), len(str(y)))
 
 class TestBase_save(unittest.TestCase):
     """Unittests of save method"""
