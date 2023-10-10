@@ -9,14 +9,37 @@ Unittest classes:
 """
 import os
 import unittest
+from datetime import datetime
 from models.base_model import BaseModel
 
 class TestBase_instantiation(unittest.TestCase):
     """Unittests of instantiation of the BaseModel class"""
     def test_with_args(self):
-        with self.assertRaises(Exception):
-            x = BaseModel(10, "youssef")
-            print(x)
+        x = BaseModel("foobar", "foo", "bar")
+        self.assertNotEqual(x.id, "foobar")
+
+    def test_with_kwargs(self):
+        kwargs = {
+                "id": "youssefbouryal",
+                "created_at": "2023-10-10 08:08:59",
+                "updated_at": "2023-10-10 08:08:59",
+                }
+        x = BaseModel(**kwargs)
+        self.assertEqual(x.id, "youssefbouryal")
+        self.assertIs(type(x.created_at), datetime)
+        self.assertIs(type(x.updated_at), datetime)
+
+    def test_with_new_vars(self):
+        kwargs = {
+                "name": "Youssef",
+                "number": 10,
+                "id": "youssefbouryal",
+                "created_at": "2023-10-10 08:08:59",
+                "updated_at": "2023-10-10 08:08:59",
+                }
+        x = BaseModel(**kwargs)
+        self.assertEqual(x.name, "Youssef")
+
 
 class TestBase_str(unittest.TestCase):
     """Unittests of str method of BaseModel class"""
@@ -24,6 +47,13 @@ class TestBase_str(unittest.TestCase):
     def test_return_type(self):
         x = BaseModel()
         self.assertIs(str, type(x.__str__()))
+
+    def test_str_with_two_instance(self):
+        x = BaseModel()
+        x.name = "John"
+        kwargs = x.to_dict().copy()
+        y = BaseModel(**kwargs)
+        self.assertEqual(str(x), str(y))
 
 class TestBase_save(unittest.TestCase):
     """Unittests of save method"""
@@ -52,6 +82,25 @@ class TestBase_to_dict(unittest.TestCase):
         x = BaseModel()
         x.name = "BaseModel"
         self.assertNotEqual(x.to_dict(), x.__dict__)
+
+    def test_to_dict_with_kwargs(self):
+        kwargs = {
+                "name": "Youssef",
+                "number": 10,
+                "id": "youssefbouryal",
+                "created_at": "2023-10-10 08:08:59",
+                "updated_at": "2023-10-10 08:08:59",
+                }
+        _dict = {
+                "name": "Youssef",
+                "number": 10,
+                "id": "youssefbouryal",
+                "created_at": "2023-10-10 08:08:59",
+                "updated_at": "2023-10-10 08:08:59",
+                "__class__": "BaseModel",
+                }
+        x = BaseModel(**kwargs)
+        self.assertEqual(x.to_dict(), _dict)
 
 
 if __name__ == "__main__":
