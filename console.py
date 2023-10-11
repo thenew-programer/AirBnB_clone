@@ -37,13 +37,13 @@ class HBNBCommand(cmd.Cmd):
         if line == "" or line is None:
             print("** class name missing **")
         else:
-            words = line.split(' ')
-            if words[0] not in storage.classes():
+            args = line.split(' ')
+            if args[0] not in storage.classes():
                 print("** class doesn't exist **")
-            elif len(words) < 2:
+            elif len(args) < 2:
                 print("** instance id missing **")
             else:
-                key = "{}.{}".format(words[0], words[1])
+                key = "{}.{}".format(args[0], args[1])
                 if key not in storage.all():
                     print("** no instance found **")
                 else:
@@ -57,13 +57,13 @@ class HBNBCommand(cmd.Cmd):
         if line == "" or line is None:
             print("** class name missing **")
         else:
-            words = line.split(' ')
-            if words[0] not in storage.classes():
+            args = line.split(' ')
+            if args[0] not in storage.classes():
                 print("** class doesn't exist **")
-            elif len(words) < 2:
+            elif len(args) < 2:
                 print("** instance id missing **")
             else:
-                key = "{}.{}".format(words[0], words[1])
+                key = "{}.{}".format(args[0], args[1])
                 if key not in storage.all():
                     print("** no instance found **")
                 else:
@@ -76,16 +76,41 @@ class HBNBCommand(cmd.Cmd):
         Function: Prints the string representation of all instances
         '''
         if line != "":
-            words = line.split(' ')
-            if words[0] not in storage.classes():
+            args = line.split(' ')
+            if args[0] not in storage.classes():
                 print("** class doesn't exist **")
             else:
                 strList = [str(obj) for key, obj in storage.all().items()
-                      if type(obj).__name__ == words[0]]
+                      if type(obj).__name__ == args[0]]
                 print(strList)
         else:
             new_strList = [str(obj) for key, obj in storage.all().items()]
             print(new_strList)
+
+    def do_update(self, line):
+        """
+        Usage: 1. update <class name> <id> <attribute name> "<attribute value>"
+        Functionality: Updates an instance based on the class name and id by
+        adding or updating attribute (save the change into the JSON file)
+        """
+        if line == "" or line is None:
+            print("** class name missing **")
+        else:
+            args = line.split(' ', 3)
+            if args[0] not in storage.classes():
+                print("** class doesn't exist **")
+            elif len(args) < 2:
+                print("** instance id missing **")
+            elif len(args) < 3:
+                print("** attribute name missing **")
+            elif len(args) < 4:
+                print("** value missing **")
+            elif "{}.{}".format(args[0], args[1]) not in storage.all():
+                    print("** no instance found **")
+            else:
+                key = "{}.{}".format(args[0], args[1])
+                setattr(storage.all()[key], args[2], args[3])
+                storage.save()
 
 
 if __name__ == "__main__":
