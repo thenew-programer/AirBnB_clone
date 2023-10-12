@@ -19,4 +19,9 @@ class TestUser(unittest.TestCase):
         """Test user instance"""
         self.assertIsInstance(self.user, User)
 
+    def test_user_email(self):
+        """Test user email"""
+        self.assertTrue(hasattr(self.user, "email"))
+        self.assertEqual(type(self.user.email), str)
+        self.assertEqual(self.user.email, "airbnb_clone@alx.com")
 
