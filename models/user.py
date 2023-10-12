@@ -11,6 +11,10 @@ class User(BaseModel):
     first_name = ""
     last_name = ""
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """constructor of the user class"""
-        super(User, self).__init__()
+        if not kwargs:
+            super(User, self).__init__()
+        else:
+            super(User, self).__init__(**kwargs)
+        storage.new(self)
