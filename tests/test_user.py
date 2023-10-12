@@ -30,3 +30,9 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(self.user, "password"))
         self.assertEqual(type(self.user.password), str)
         self.assertEqual(self.user.password, "1234password")
+
+    def test_user_first_name(self):
+        """Test user first_name"""
+        self.assertTrue(hasattr(self.user, "first_name"))
+        self.assertEqual(type(self.user.first_name), str)
+        self.assertEqual(self.user.first_name, "youssef")
