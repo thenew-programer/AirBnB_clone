@@ -47,3 +47,8 @@ class TestUser(unittest.TestCase):
         """Test user id"""
         self.assertTrue(hasattr(self.user, "id"))
         self.assertEqual(type(self.user.id), str)
+
+    def test_user_created_at(self):
+        """Test user created_at"""
+        self.assertTrue(hasattr(self.user, "created_at"))
+        self.assertEqual(type(self.user.created_at).__name__, datetime)
