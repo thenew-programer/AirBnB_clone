@@ -15,5 +15,8 @@ class TestUser(unittest.TestCase):
         self.user.email = "airbnb_clone@alx.com"
         self.user.password = "1234password"
 
+    def test_user_instance(self):
+        """Test user instance"""
+        self.assertIsInstance(self.user, User)
 
 
