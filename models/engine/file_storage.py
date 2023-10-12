@@ -2,6 +2,7 @@
 """Module for FileStorage class."""
 import datetime
 import json
+import os
 
 
 class FileStorage:
@@ -31,11 +32,15 @@ class FileStorage:
         """Reloads the stored objects"""
         try:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
-                obj_dict = json.load(f)
+                if (os.stat(FileStorage.__file_path).st_size == 0):
+                    return
+
+                loaded_dict = json.load(f)
                 obj_dict = {k: self.classes()[v["__class__"]](**v)
-                            for k, v in obj_dict.items()}
-            FileStorage.__objects = obj_dict
+                            for k, v in loaded_dict.items()}
+                FileStorage.__objects = obj_dict
         except FileNotFoundError:
+
             return
 
     def classes(self):
@@ -45,6 +50,6 @@ class FileStorage:
 
         classes = {
             "BaseModel": BaseModel,
-            "User": User,
+            "User": User
                    }
         return classes
