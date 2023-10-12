@@ -25,3 +25,8 @@ class TestUser(unittest.TestCase):
         self.assertEqual(type(self.user.email), str)
         self.assertEqual(self.user.email, "airbnb_clone@alx.com")
 
+    def test_user_password(self):
+        """Test user password"""
+        self.assertTrue(hasattr(self.user, "password"))
+        self.assertEqual(type(self.user.password), str)
+        self.assertEqual(self.user.password, "1234password")
