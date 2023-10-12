@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Unittest for User class"""
 import unittest
+from datetime import datetime
 from models.user import User
 
 
@@ -52,3 +53,8 @@ class TestUser(unittest.TestCase):
         """Test user created_at"""
         self.assertTrue(hasattr(self.user, "created_at"))
         self.assertEqual(type(self.user.created_at).__name__, datetime)
+
+    def test_user_updated_at(self):
+        """Test user updated_at"""
+        self.assertTrue(hasattr(self.user, "updated_at"))
+        self.assertEqual(type(self.user.updated_at).__name__, datetime)
