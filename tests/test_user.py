@@ -52,12 +52,12 @@ class TestUser(unittest.TestCase):
     def test_user_created_at(self):
         """Test user created_at"""
         self.assertTrue(hasattr(self.user, "created_at"))
-        self.assertEqual(type(self.user.created_at).__name__, datetime)
+        self.assertEqual(type(self.user.created_at), datetime)
 
     def test_user_updated_at(self):
         """Test user updated_at"""
         self.assertTrue(hasattr(self.user, "updated_at"))
-        self.assertEqual(type(self.user.updated_at).__name__, datetime)
+        self.assertEqual(type(self.user.updated_at), datetime)
 
     def test_kwargs(self):
         """Tests user kwargs"""
