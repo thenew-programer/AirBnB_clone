@@ -58,3 +58,11 @@ class TestUser(unittest.TestCase):
         """Test user updated_at"""
         self.assertTrue(hasattr(self.user, "updated_at"))
         self.assertEqual(type(self.user.updated_at).__name__, datetime)
+
+    def test_kwargs(self):
+        """Tests user kwargs"""
+        user = User(**self.user.to_dict())
+        self.assertEqual(self.user.id, user.id)
+        self.assertEqual(self.user.created_at, user.created_at)
+        self.assertEqual(self.user.updated_at, user.updated_at)
+        self.assertNotEqual(self.user, user)
