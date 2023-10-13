@@ -2,12 +2,28 @@
 """Console is a command interpreter for hbnb project"""
 import cmd
 from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.place import Place
+from models.review import Review
+from models.amenity import Amenity
+from models.state import State
+from models.city import City
 
 
 class HBNBCommand(cmd.Cmd):
     """Class containing all the interpreter command"""
 
     prompt = "(hbnb) "
+    __classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review
+            }
 
     def do_quit(self, line):
         """quit    -   exit the program"""
@@ -23,10 +39,10 @@ class HBNBCommand(cmd.Cmd):
         '''
         if line == "" or line is None:
             print("** class name missing **")
-        elif line not in storage.classes():
+        elif line not in HBNBCommand.__classes.keys():
             print("** class doesn't exist **")
         else:
-            obj_Stg = storage.classes()[line]()
+            obj_Stg = HBNBCommand.__classes[line]()
             obj_Stg.save()
             print(obj_Stg.id)
 
@@ -38,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             args = line.split(' ')
-            if args[0] not in storage.classes():
+            if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             elif len(args) < 2:
                 print("** instance id missing **")
@@ -58,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             args = line.split(' ')
-            if args[0] not in storage.classes():
+            if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             elif len(args) < 2:
                 print("** instance id missing **")
@@ -77,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
         '''
         if line != "":
             args = line.split(' ')
-            if args[0] not in storage.classes():
+            if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             else:
                 strList = [str(obj) for key, obj in storage.all().items()
@@ -97,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             args = line.split(' ', 3)
-            if args[0] not in storage.classes():
+            if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             elif len(args) < 2:
                 print("** instance id missing **")
