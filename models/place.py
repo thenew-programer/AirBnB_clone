@@ -12,7 +12,7 @@ class Place(BaseModel):
         name: the name of the posting I guess
         description: description of the posting
         number_rooms: number of rooms available
-        number_bathrooms: number of bathrooms available 
+        number_bathrooms: number of bathrooms available
         max_guest: max number of people that can enter the place
         price_by_night: price
         latitude: latitude of the place
