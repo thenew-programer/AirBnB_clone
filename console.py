@@ -129,6 +129,23 @@ class HBNBCommand(cmd.Cmd):
                 setattr(storage.all()[key], args[2], args[3])
                 storage.save()
 
+    def do_count(self, line):
+        """
+        Returns the count of instances of a particular class
+        """
+        if line != "":
+            args = line.split(' ')
+            if args[0] not in HBNBCommand.__classes.keys():
+                print("** class doesn't exist **")
+            else:
+                obj_list = [str(obj) for key, obj in storage.all().items()
+                      if type(obj).__name__ == args[0]]
+                print(len(obj_list))
+        else:
+            obj_list = [str(obj) for key, obj in storage.all().items()]
+            print(len(obj_list))
+
+
     def do_BaseModel(self, line):
         """
         Usage: BaseModel.<command>(<arguments>, ...)
