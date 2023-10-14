@@ -154,8 +154,12 @@ class HBNBCommand(cmd.Cmd):
             _, command = line.split(".", 1)
             command = re.sub(r"[(),]", " ", command)
             args = command.split()
+            str_arg = "BaseModel"
             if hasattr(self, f"do_{args[0]}"):
-                getattr(self, f"do_{args[0]}")("BaseModel")
+                for i in range(1, len(args)):
+                    str_arg += " " + args[i]
+                print(str_arg)
+                getattr(self, f"do_{args[0]}")(str_arg)
             else:
                 print("** command doesn't exist **")
 
