@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Console is a command interpreter for hbnb project"""
 import cmd
+import re
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -128,6 +129,116 @@ class HBNBCommand(cmd.Cmd):
                 setattr(storage.all()[key], args[2], args[3])
                 storage.save()
 
+    def do_BaseModel(self, line):
+        """
+        Usage: BaseModel.<command>(<arguments>, ...)
+        Functionality: call method on classes in another way
+        """
+        if line == "" or line is None:
+            print("** command name missing **")
+        else:
+            _, command = line.split(".", 1)
+            command = re.sub(r"[(),]", " ", command)
+            args = command.split()
+            if hasattr(self, f"do_{args[0]}"):
+                getattr(self, f"do_{args[0]}")("BaseModel")
+            else:
+                print("** command doesn't exist **")
+
+    def do_User(self, line):
+        """
+        Usage: User.<command>(<arguments>, ...)
+        Functionality: call method on classes in another way
+        """
+        if line == "" or line is None:
+            print("** command name missing **")
+        else:
+            _, command = line.split(".", 1)
+            command = re.sub(r"[(),]", " ", command)
+            args = command.split()
+            if hasattr(self, f"do_{args[0]}"):
+                getattr(self, f"do_{args[0]}")("User")
+            else:
+                print("** command doesn't exist **")
+
+    def do_State(self, line):
+        """
+        Usage: State.<command>(<arguments>, ...)
+        Functionality: call method on classes in another way
+        """
+        if line == "" or line is None:
+            print("** command name missing **")
+        else:
+            _, command = line.split(".", 1)
+            command = re.sub(r"[(),]", " ", command)
+            args = command.split()
+            if hasattr(self, f"do_{args[0]}"):
+                getattr(self, f"do_{args[0]}")("State")
+            else:
+                print("** command doesn't exist **")
+
+    def do_City(self, line):
+        """
+        Usage: City.<command>(<arguments>, ...)
+        Functionality: call method on classes in another way
+        """
+        if line == "" or line is None:
+            print("** command name missing **")
+        else:
+            _, command = line.split(".", 1)
+            command = re.sub(r"[(),]", " ", command)
+            args = command.split()
+            if hasattr(self, f"do_{args[0]}"):
+                getattr(self, f"do_{args[0]}")("City")
+            else:
+                print("** command doesn't exist **")
+
+    def do_Amenity(self, line):
+        """
+        Usage: Amenity.<command>(<arguments>, ...)
+        Functionality: call method on classes in another way
+        """
+        if line == "" or line is None:
+            print("** command name missing **")
+        else:
+            _, command = line.split(".", 1)
+            command = re.sub(r"[(),]", " ", command)
+            args = command.split()
+            if hasattr(self, f"do_{args[0]}"):
+                getattr(self, f"do_{args[0]}")("Amenity")
+            else:
+                print("** command doesn't exist **")
+
+    def do_Place(self, line):
+        """
+        Usage: Place.<command>(<arguments>, ...)
+        Functionality: call method on classes in another way
+        """
+        if line == "" or line is None:
+            print("** command name missing **")
+        else:
+            _, command = line.split(".", 1)
+            command = re.sub(r"[(),]", " ", command)
+            args = command.split()
+            if hasattr(self, f"do_{args[0]}"):
+                getattr(self, f"do_{args[0]}")("Place")
+            else:
+                print("** command doesn't exist **")
+    def do_Review(self, line):
+        """
+        Usage: Review.<command>(<arguments>, ...)
+        Functionality: call method on classes in another way
+        """
+        if line == "" or line is None:
+            print("** command name missing **")
+        else:
+            _, command = line.split(".", 1)
+            command = re.sub(r"[(),]", " ", command)
+            args = command.split()
+            if hasattr(self, f"do_{args[0]}"):
+                getattr(self, f"do_{args[0]}")("Review")
+            else:
+                print("** command doesn't exist **")
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
