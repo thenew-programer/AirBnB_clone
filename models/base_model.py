@@ -25,18 +25,13 @@ class BaseModel:
             storage.new(self)
         else:
             for key, value in kwargs.items():
-                if key in ("id",
-                           "created_at",
-                           "updated_at",
-                           "__class__"):
+                if key == "__class__":
                     continue
-                setattr(self, key, value)
-            self.id = kwargs["id"]
-            self.created_at = datetime.strptime(kwargs["created_at"],
-                                                "%Y-%m-%dT%H:%M:%S.%f")
-            self.updated_at = datetime.strptime(kwargs["updated_at"],
-                                                "%Y-%m-%dT%H:%M:%S.%f")
 
+                if key in ("created_at", "updated_at"):
+                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+
+                setattr(self, key, value)
     def save(self):
         """
         updates the public instance attribute
