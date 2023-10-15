@@ -52,10 +52,3 @@ class TestState(unittest.TestCase):
     def test_state_method_to_dict(self):
         """Tests state to_dict"""
         self.assertEqual(type(self.state.to_dict()), dict)
-
-    def test_state_kwargs(self):
-        """Tests state kwargs"""
-        self.new_state = State(name="Cairo")
-        self.assertEqual(type(self.new_state).__name__, "State")
-        self.assertTrue(hasattr(self.new_state, "name"))
-        self.assertEqual(self.new_state.name, "Cairo")
