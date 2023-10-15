@@ -22,8 +22,8 @@ class TestBase_instantiation(unittest.TestCase):
     def test_with_kwargs(self):
         kwargs = {
                 "id": "youssefbouryal",
-                "created_at": "2023-10-10 08:08:59",
-                "updated_at": "2023-10-10 08:08:59",
+                "created_at": "2023-10-10T08:08:59.234200",
+                "updated_at": "2023-10-10T08:08:59.234200",
                 }
         x = BaseModel(**kwargs)
         self.assertEqual(x.id, "youssefbouryal")
@@ -35,8 +35,8 @@ class TestBase_instantiation(unittest.TestCase):
                 "name": "Youssef",
                 "number": 10,
                 "id": "youssefbouryal",
-                "created_at": "2023-10-10 08:08:59",
-                "updated_at": "2023-10-10 08:08:59",
+                "created_at": "2023-10-10T08:08:59.234200",
+                "updated_at": "2023-10-10T08:08:59.234200",
                 }
         x = BaseModel(**kwargs)
         self.assertEqual(x.name, "Youssef")
@@ -91,15 +91,15 @@ class TestBase_to_dict(unittest.TestCase):
                 "name": "Youssef",
                 "number": 10,
                 "id": "youssefbouryal",
-                "created_at": "2023-10-10 08:08:59",
-                "updated_at": "2023-10-10 08:08:59",
+                "created_at": "2023-10-10T08:08:59.234200",
+                "updated_at": "2023-10-10T08:08:59.234200",
                 }
         _dict = {
                 "name": "Youssef",
                 "number": 10,
                 "id": "youssefbouryal",
-                "created_at": "2023-10-10T08:08:59",
-                "updated_at": "2023-10-10T08:08:59",
+                "created_at": "2023-10-10T08:08:59.234200",
+                "updated_at": "2023-10-10T08:08:59.234200",
                 "__class__": "BaseModel",
                 }
         x = BaseModel(**kwargs)
