@@ -54,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         if line == "" or line is None:
             print("** class name missing **")
         else:
-            args = line.split(' ')
+            args = line.split()
             if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             elif len(args) < 2:
@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         if line == "" or line is None:
             print("** class name missing **")
         else:
-            args = line.split(' ')
+            args = line.split()
             if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             elif len(args) < 2:
@@ -91,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
         Function: Prints the string representation of all instances
         '''
         if line != "":
-            args = line.split(' ')
+            args = line.split()
             if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             else:
@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
         if line == "" or line is None:
             print("** class name missing **")
         else:
-            args = line.split(' ', 3)
+            args = line.split()
             if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             elif len(args) < 2:
@@ -132,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
         Returns the count of instances of a particular class
         """
         if line != "":
-            args = line.split(' ')
+            args = line.split()
             if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             else:
