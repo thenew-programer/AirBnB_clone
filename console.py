@@ -258,6 +258,17 @@ class HBNBCommand(cmd.Cmd):
                 getattr(self, f"do_{args[0]}")("Review")
             else:
                 print("** command doesn't exist **")
+    def default(self, line):
+        """Overwrite the default behaviour of default method"""
+        if line == "" or line is None:
+            print("** command name missing **")
+        else:
+            class_name, command = line.split(".", 1)
+            command = re.sub(r"[(),]", " ", command)
+            args = command.split()
+            args.insert(1, class_name)
+            arg_str = " ".join(args)
+            self.onecmd(arg_str)
 
 
 if __name__ == "__main__":
