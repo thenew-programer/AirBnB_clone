@@ -1,5 +1,5 @@
 # AirBnB Clone
-![HBNB](./65f4a1dd9c51265f49d0.png)
+![HBNB](./media/65f4a1dd9c51265f49d0.png)
 ## Background Context
 ### Welcome to the AirBnB clone project!
 Before starting, please read the `AirBnB` concept page.
@@ -126,4 +126,4 @@ EOF  help  quit
 $
 ```
 All tests should also pass in non-interactive mode: $ echo `python3 -m unittest discover tests` | bash
-![HBNB](./815046647d23428a14ca.png)
+![HBNB](./media/815046647d23428a14ca.png)
