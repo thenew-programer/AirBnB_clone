@@ -66,7 +66,6 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print(storage.all()[key])
 
-
     def do_destroy(self, line):
         '''Usage: 1. destroy <class name> <id> | 2. <class name>.delete(<id>)
         Function: Deletes the instance  of the class
@@ -87,7 +86,6 @@ class HBNBCommand(cmd.Cmd):
                     del storage.all()[key]
                     storage.save()
 
-
     def do_all(self, line):
         '''Usage: 1. all | 2. all <class name> | 3. <class name>.all()
         Function: Prints the string representation of all instances
@@ -97,12 +95,12 @@ class HBNBCommand(cmd.Cmd):
             if args[0] not in HBNBCommand.__classes.keys():
                 print("** class doesn't exist **")
             else:
-                strList = [str(obj) for key, obj in storage.all().items()
-                      if type(obj).__name__ == args[0]]
-                print(strList)
+                obj_list = [str(obj) for key, obj in storage.all().items()
+                            if type(obj).__name__ == args[0]]
+                print(obj_list)
         else:
-            new_strList = [str(obj) for key, obj in storage.all().items()]
-            print(new_strList)
+            obj_list = [str(obj) for key, obj in storage.all().items()]
+            print(obj_list)
 
     def do_update(self, line):
         """
@@ -123,7 +121,7 @@ class HBNBCommand(cmd.Cmd):
             elif len(args) < 4:
                 print("** value missing **")
             elif "{}.{}".format(args[0], args[1]) not in storage.all():
-                    print("** no instance found **")
+                print("** no instance found **")
             else:
                 key = "{}.{}".format(args[0], args[1])
                 setattr(storage.all()[key], args[2], args[3])
@@ -139,12 +137,11 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 obj_list = [str(obj) for key, obj in storage.all().items()
-                      if type(obj).__name__ == args[0]]
+                            if type(obj).__name__ == args[0]]
                 print(len(obj_list))
         else:
             obj_list = [str(obj) for key, obj in storage.all().items()]
             print(len(obj_list))
-
 
     def do_BaseModel(self, line):
         """
@@ -241,6 +238,7 @@ class HBNBCommand(cmd.Cmd):
                 getattr(self, f"do_{args[0]}")("Place")
             else:
                 print("** command doesn't exist **")
+
     def do_Review(self, line):
         """
         Usage: Review.<command>(<arguments>, ...)
@@ -256,6 +254,7 @@ class HBNBCommand(cmd.Cmd):
                 getattr(self, f"do_{args[0]}")("Review")
             else:
                 print("** command doesn't exist **")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

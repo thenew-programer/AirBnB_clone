@@ -32,8 +32,10 @@ class BaseModel:
                     continue
                 setattr(self, key, value)
             self.id = kwargs["id"]
-            self.created_at = parser.parse(kwargs["created_at"])
-            self.updated_at = parser.parse(kwargs["updated_at"])
+            self.created_at = datetime.strptime(kwargs["created_at"],
+                                                "%Y-%m-%dT%H:%M:%S.%f")
+            self.updated_at = datetime.strptime(kwargs["updated_at"],
+                                                "%Y-%m-%dT%H:%M:%S.%f")
 
     def save(self):
         """
