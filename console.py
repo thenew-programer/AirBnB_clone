@@ -155,6 +155,9 @@ class HBNBCommand(cmd.Cmd):
             arg_str = " ".join(args)
             self.onecmd(arg_str)
 
+    def emptyline(self):
+        pass
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
