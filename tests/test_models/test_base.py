@@ -12,6 +12,7 @@ import unittest
 from datetime import datetime
 from models.base_model import BaseModel
 
+
 class TestBase_instantiation(unittest.TestCase):
     """Unittests of instantiation of the BaseModel class"""
     def test_with_args(self):
@@ -55,6 +56,7 @@ class TestBase_str(unittest.TestCase):
         y = BaseModel(**kwargs)
         self.assertEqual(len(str(x)), len(str(y)))
 
+
 class TestBase_save(unittest.TestCase):
     """Unittests of save method"""
 
@@ -64,6 +66,7 @@ class TestBase_save(unittest.TestCase):
         x.save()
         x_saved_dict = x.to_dict().copy()
         self.assertNotEqual(x_dict, x_saved_dict)
+
 
 class TestBase_to_dict(unittest.TestCase):
     """Unittests of to_dict method"""
