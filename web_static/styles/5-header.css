@@ -1,0 +1,11 @@
+header {
+	background-color: #fff;
+	height: 70px;
+	width: 100%;
+	border-bottom: 1px solid #CCC;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	background: url(../images/hbnb_logo.png);
+	background-repeat: no-repeat;
+}
